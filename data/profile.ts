@@ -100,7 +100,8 @@ export const profile = {
     { title: "Ingeniería de Sistemas", org: "UNTELS · 2022 – 2026" },
   ],
   certifications: [
-    "SOLIDWORKS University – Technical SOLIDWORKS Foundations (PDM, 3DEXPERIENCE) – en curso",
+    "Dassault Systèmes SOLIDWORKS – GOVERNANCE Tech Sales Professional (Nov 2026)",
+    "Dassault Systèmes SOLIDWORKS – Technical Readiness Program, nivel Specialist (Nov 2026)",
     "Cisco CCNA v7 – Introduction to Networks (Dic 2025)",
     "Excel Avanzado – Automatización con macros (Feb 2025)",
     "Pentesting Web (Feb 2025)",
