@@ -2,6 +2,7 @@ import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import IntegrationOrbit from "@/components/IntegrationOrbit";
 import CountUp from "@/components/CountUp";
+import Typewriter from "@/components/Typewriter";
 
 export default function Hero() {
   const waUrl = `https://wa.me/${profile.whatsapp.number}?text=${encodeURIComponent(profile.whatsapp.message)}`;
@@ -32,7 +33,11 @@ export default function Hero() {
             empresariales <span className="gradient-text">que sí se usan.</span>
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300">
+          <p className="mt-5 text-lg text-slate-300">
+            <Typewriter words={["Integración de sistemas", "Oracle NetSuite ERP / CRM", "Automatización de procesos", "IA aplicada a la empresa", "CAD / PDM y visualización 3D"]} />
+          </p>
+
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-slate-300">
             ERP, CAD/PDM, nube, dashboards e IA trabajando juntos. Soy{" "}
             <span className="font-semibold text-white">Gian Sinarahua</span>, analista de sistemas especializado en
             Oracle NetSuite e integraciones.

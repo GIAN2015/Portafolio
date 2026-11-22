@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkBackground from "@/components/NetworkBackground";
+import FloatingIcons from "@/components/FloatingIcons";
+import ScrollFx from "@/components/ScrollFx";
 
 export const metadata: Metadata = {
   title: "Gian Sinarahua | Integración de Sistemas · NetSuite · Automatización e IA",
@@ -16,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body className="min-h-screen antialiased">
         <NetworkBackground />
+        <FloatingIcons />
+        <ScrollFx />
         <Navbar />
         <main className="mx-auto max-w-6xl px-4 py-10 sm:py-14">{children}</main>
         <Footer />

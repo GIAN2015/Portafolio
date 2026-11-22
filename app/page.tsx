@@ -11,6 +11,8 @@ import Capabilities from "@/components/Capabilities";
 import Viewer3DLazy from "@/components/Viewer3DLazy";
 import TechMarquee from "@/components/TechMarquee";
 import Reveal from "@/components/Reveal";
+import Process from "@/components/Process";
+import About from "@/components/About";
 
 export default function HomePage() {
   const waUrl = `https://wa.me/${profile.whatsapp.number}?text=${encodeURIComponent(profile.whatsapp.message)}`;
@@ -45,6 +47,10 @@ export default function HomePage() {
       </Reveal>
 
       <ProjectsGrid projects={projects} />
+
+      <Process />
+
+      <About />
 
       <Experience />
 

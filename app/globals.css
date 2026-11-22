@@ -170,3 +170,11 @@ html {
     transform: none;
   }
 }
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  33% { transform: translate3d(14px, -22px, 0) rotate(4deg); }
+  66% { transform: translate3d(-10px, -8px, 0) rotate(-2deg); }
+}
+.drift { animation: drift 14s ease-in-out infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .drift { animation: none !important; } }
