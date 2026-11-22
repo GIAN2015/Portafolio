@@ -30,7 +30,7 @@ export default function Navbar() {
         <div
           className={
             "mt-3 flex items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 " +
-            (scrolled ? "glass shadow-[0_10px_40px_-15px_rgba(0,0,0,0.9)]" : "border border-transparent")
+            (scrolled ? "border border-white/10 bg-[#070d22]/90 backdrop-blur-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.9)]" : "border border-transparent")
           }
         >
           <Link href="/" className="flex items-center gap-3">
