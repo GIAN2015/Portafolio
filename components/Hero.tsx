@@ -98,6 +98,7 @@ export default function Hero() {
               <Image
                 src={featured.cover}
                 alt={featured.title}
+                unoptimized={featured.cover.endsWith(".svg")}
                 width={1200}
                 height={700}
                 className="h-[240px] w-full object-cover transition duration-500 group-hover:scale-[1.02]"

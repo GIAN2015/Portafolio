@@ -9,6 +9,8 @@ import Credentials from "@/components/Credentials";
 import TechStack from "@/components/TechStack";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
+import Capabilities from "@/components/Capabilities";
+import Viewer3DLazy from "@/components/Viewer3DLazy";
 export default function HomePage() {
   const waUrl = `https://wa.me/${profile.whatsapp.number}?text=${encodeURIComponent(
     profile.whatsapp.message
@@ -18,22 +20,20 @@ export default function HomePage() {
       <div className="animate-fadeUp">
         <Hero />
       </div>
+      <Capabilities />
+
       <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
-        <SectionTitle
-          eyebrow="Resumen"
-          title="Lo que hago"
-          subtitle="No solo programo: analizo el proceso del negocio, diseño la solución e integro los sistemas para que la información fluya sola."
-        />
-        <div className="grid gap-4 md:grid-cols-2">
-          {profile.highlights.slice(0, 6).map((h) => (
-            <div
-              key={h}
-              className="rounded-2xl border border-white/10 bg-black/20 p-4"
-            >
-              <p className="text-sm text-white/80">{h}</p>
-            </div>
-          ))}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <SectionTitle
+            eyebrow="Demo en vivo"
+            title="Visor 3D de piezas CAD"
+            subtitle="Escanea una etiqueta y mira cómo aparece la pieza, igual que en los televisores de planta. Gira, explosiona el ensamble o toca una pieza."
+          />
+          <a href="/projects/visor-3d-cad-planta" className="mb-6 shrink-0 text-sm font-medium text-white/80 hover:text-white">
+            Ver el caso completo →
+          </a>
         </div>
+        <Viewer3DLazy compact />
       </section>
 
       <div className="animate-fadeUp anim-delay-200">

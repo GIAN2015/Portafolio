@@ -3,7 +3,7 @@ export type Project = {
   slug: string;
   title: string;
   company?: string;
-  type: "Integración" | "IA" | "Automatización" | "Web" | "Ecommerce" | "Sistema" | "Landing" | "App";
+  type: "3D" | "Integración" | "IA" | "Automatización" | "Web" | "Ecommerce" | "Sistema" | "Landing" | "App";
   description: string;
   problem?: string;
   solution?: string;
@@ -18,12 +18,41 @@ export type Project = {
   architecture?: string[];
   /** Proyecto de empresa: se muestra sin código ni datos reales */
   confidential?: boolean;
+  /** Muestra el visor 3D interactivo en el detalle */
+  demo3d?: boolean;
 
   cover?: string; // "/projects/xxx.png"
   accent?: "blue" | "violet" | "emerald" | "amber";
 };
 
 export const projects: Project[] = [
+  {
+    slug: "visor-3d-cad-planta",
+    title: "Visualización 3D de piezas CAD en planta",
+    company: "CADSO · cliente industrial",
+    type: "3D",
+    description:
+      "Sistema que exporta automáticamente los modelos de SolidWorks a 3D web y los muestra en los televisores de planta al escanear la etiqueta de la pieza.",
+    problem:
+      "En planta, los operarios necesitaban ver la pieza exacta que van a ensamblar, con sus datos de ingeniería, sin abrir SolidWorks ni buscar planos impresos.",
+    solution:
+      "Un proceso en segundo plano exporta los archivos de SolidWorks a binario 3D (.glb) junto con sus propiedades, los publica del servidor a la nube y un visor web los renderiza. Al escanear la etiqueta, el televisor muestra la pieza en modo ensamble o modo pieza con su data.",
+    role: "Diseño de la arquitectura, automatización de la exportación CAD, publicación en la nube y desarrollo del visor 3D",
+    stack: ["SolidWorks API", "glTF / .glb", "Three.js / WebGL", "Nube", "Lector de códigos"],
+    tags: ["CAD", "3D", "Manufactura", "Integración"],
+    year: "2026",
+    links: {},
+    highlights: [
+      "Exportación CAD → .glb automática, sin intervención manual",
+      "La pieza aparece sola en la TV al escanear la etiqueta",
+      "Modo ensamble y modo pieza con datos de ingeniería",
+    ],
+    architecture: ["SolidWorks", "Exportación automática .glb", "Servidor → Nube", "Visor 3D web", "TV de planta + escáner"],
+    confidential: true,
+    demo3d: true,
+    cover: "/projects/visor-3d-cad-planta.svg",
+    accent: "violet",
+  },
   {
     slug: "netsuite-looker-pipeline",
     title: "Pipeline de datos NetSuite → Looker Studio",
@@ -46,6 +75,7 @@ export const projects: Project[] = [
       "Depuración de RESTlets para Casos, Actividades y Oportunidades",
     ],
     architecture: ["NetSuite ERP/CRM", "RESTlet (SuiteScript 2.x)", "Google Sheets API", "Looker Studio"],
+    cover: "/projects/netsuite-looker-pipeline.svg",
     confidential: true,
     accent: "blue",
   },
@@ -71,6 +101,7 @@ export const projects: Project[] = [
       "Acceso controlado y auditable con OAuth 2.0",
     ],
     architecture: ["Usuario", "Asistente de IA (Claude)", "Servidor MCP", "OAuth 2.0 · rol solo lectura", "NetSuite ERP"],
+    cover: "/projects/ia-generativa-erp-mcp.svg",
     confidential: true,
     accent: "violet",
   },
@@ -92,6 +123,7 @@ export const projects: Project[] = [
     links: {},
     highlights: ["Consolidado en una sola moneda", "Detracción calculada automáticamente", "Integrado al flujo del ERP"],
     architecture: ["Facturas en NetSuite", "Suitelet (SuiteScript 2.x)", "Tipo de cambio + detracción", "Reporte consolidado"],
+    cover: "/projects/suitelet-facturas-totales.svg",
     confidential: true,
     accent: "emerald",
   },
@@ -113,6 +145,7 @@ export const projects: Project[] = [
     links: {},
     highlights: ["Historial 2021–2025 disponible en el ERP", "Proceso documentado y repetible", "Datos validados antes de la carga"],
     architecture: ["Datos históricos 2021–2025", "Limpieza y transformación", "CSV Import masivo", "NetSuite ERP"],
+    cover: "/projects/migracion-historica-netsuite.svg",
     confidential: true,
     accent: "amber",
   },

@@ -6,6 +6,7 @@ import Badge from "@/components/Badge";
 import SectionTitle from "@/components/SectionTitle";
 import { projects } from "@/data/projects";
 import FlowDiagram from "@/components/FlowDiagram";
+import Viewer3DLazy from "@/components/Viewer3DLazy";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -40,6 +41,7 @@ export default async function ProjectDetailPage({
             <Image
               src={project.cover}
               alt={project.title}
+              unoptimized={project.cover.endsWith(".svg")}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 1200px"
@@ -92,6 +94,17 @@ export default async function ProjectDetailPage({
           </div>
         </div>
       </header>
+
+      {project.demo3d ? (
+        <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <SectionTitle
+            eyebrow="Demo interactiva"
+            title="Pruébalo: escanea una etiqueta"
+            subtitle="Recreación del visor con un ensamble de ejemplo modelado para el portafolio (no son piezas del cliente)."
+          />
+          <Viewer3DLazy />
+        </section>
+      ) : null}
 
       {project.architecture ? (
         <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">

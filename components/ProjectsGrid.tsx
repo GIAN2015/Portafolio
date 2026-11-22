@@ -7,6 +7,7 @@ import SectionTitle from "@/components/SectionTitle";
 
 const TYPES: Array<Project["type"] | "Todos"> = [
   "Todos",
+  "3D",
   "Integración",
   "IA",
   "Automatización",

@@ -23,6 +23,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <Image
             src={project.cover}
             alt={project.title}
+            unoptimized={project.cover.endsWith(".svg")}
             fill
             className="object-cover opacity-95 transition duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, 50vw"

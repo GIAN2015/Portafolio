@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Inter,Segoe UI,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a1a05"/><stop offset="1" stop-color="#0d0a06"/></linearGradient>
+    <linearGradient id="pipe" x1="0" x2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <text x="600" y="90" fill="#fde68a" font-size="22" text-anchor="middle" font-weight="600">Migración histórica 2021 → 2025</text>
+  <!-- archivos -->
+  <g font-size="15" text-anchor="middle">
+    <g transform="translate(110 170)"><path d="M0 0 h90 l30 30 v110 h-120 z" fill="#1f2937" stroke="#f59e0b"/><text x="60" y="95" fill="#fbbf24" font-weight="700">2021</text><text x="60" y="122" fill="#9ca3af" font-size="12">.xlsx</text></g>
+    <g transform="translate(110 330)"><path d="M0 0 h90 l30 30 v110 h-120 z" fill="#1f2937" stroke="#f59e0b"/><text x="60" y="95" fill="#fbbf24" font-weight="700">2022–23</text><text x="60" y="122" fill="#9ca3af" font-size="12">.csv</text></g>
+    <g transform="translate(110 490)"><path d="M0 0 h90 l30 30 v110 h-120 z" fill="#1f2937" stroke="#f59e0b"/><text x="60" y="95" fill="#fbbf24" font-weight="700">2024–25</text><text x="60" y="122" fill="#9ca3af" font-size="12">.xlsx</text></g>
+  </g>
+  <!-- tuberías -->
+  <g fill="none" stroke="url(#pipe)" stroke-width="5" stroke-linecap="round">
+    <path d="M240 240 C 330 240, 330 360, 420 360"/><path d="M240 400 L420 380"/><path d="M240 560 C 330 560, 330 400, 420 400"/>
+    <path d="M700 380 L800 380"/>
+  </g>
+  <!-- transform -->
+  <rect x="420" y="280" width="280" height="200" rx="22" fill="#111827" stroke="#f59e0b"/>
+  <text x="560" y="320" fill="#fde68a" font-size="18" text-anchor="middle" font-weight="600">Limpieza y transformación</text>
+  <g font-size="15" fill="#d1d5db">
+    <text x="450" y="360">✓ Normalizar clientes</text><text x="450" y="392">✓ Fechas y estados</text>
+    <text x="450" y="424">✓ Quitar duplicados</text><text x="450" y="456">✓ Mapear a campos ERP</text>
+  </g>
+  <!-- netsuite -->
+  <g transform="translate(800 260)">
+    <ellipse cx="150" cy="30" rx="150" ry="34" fill="#1e3a8a" stroke="#60a5fa"/>
+    <path d="M0 30 v180 a150 34 0 0 0 300 0 v-180" fill="#172554" stroke="#60a5fa"/>
+    <ellipse cx="150" cy="30" rx="150" ry="34" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="150" y="118" fill="#fff" font-size="24" text-anchor="middle" font-weight="700">NetSuite</text>
+    <text x="150" y="150" fill="#bfdbfe" font-size="15" text-anchor="middle">CSV Import masivo</text>
+  </g>
+  <!-- contadores -->
+  <g font-size="15" text-anchor="middle">
+    <rect x="800" y="520" width="140" height="80" rx="14" fill="#111827" stroke="#374151"/><text x="870" y="556" fill="#fff" font-size="26" font-weight="700">5</text><text x="870" y="582" fill="#9ca3af">años de datos</text>
+    <rect x="960" y="520" width="140" height="80" rx="14" fill="#111827" stroke="#374151"/><text x="1030" y="556" fill="#34d399" font-size="26" font-weight="700">100%</text><text x="1030" y="582" fill="#9ca3af">validado</text>
+  </g>
+  <text x="1130" y="660" fill="#57534e" font-size="12" text-anchor="end">Ilustración del proceso</text>
+</svg>
