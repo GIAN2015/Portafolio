@@ -4,12 +4,12 @@ export const profile = {
   location: "Lima, Perú",
   /** Foto profesional: colócala en /public/me.jpg y escribe "/me.jpg" */
   photo: "",
-  phone: "+51 967 152 992",
+  phone: "+51 919 652 457",
   email: "giansica29@gmail.com",
 
   // NUEVO
   whatsapp: {
-    number: "51967152992",
+    number: "51919652457",
     message:
       "Hola Gian, vi tu portafolio y quiero conversar sobre un proyecto. ¿Tienes disponibilidad?",
   },

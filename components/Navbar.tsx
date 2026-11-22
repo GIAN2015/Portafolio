@@ -56,7 +56,7 @@ export default function Navbar() {
           </nav>
 
           <a
-            href="https://wa.me/51967152992?text=Hola%20Gian%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar."
+            href="https://wa.me/51919652457?text=Hola%20Gian%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar."
             target="_blank"
             rel="noreferrer"
             className="btn-primary rounded-xl px-4 py-2 text-sm font-semibold text-white"
