@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
+import FlowDiagram from "@/components/FlowDiagram";
 
 const accentMap = {
   blue: "from-blue-500/25 via-blue-500/0 to-transparent",
@@ -27,11 +28,15 @@ export default function ProjectCard({ project }: { project: Project }) {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-white/10 to-transparent" />
+          <div className="flex h-full w-full items-center bg-gradient-to-br from-white/10 to-transparent px-4 pt-10">
+            {project.architecture ? <FlowDiagram steps={project.architecture} compact /> : null}
+          </div>
         )}
 
-        <div className={`absolute inset-0 bg-gradient-to-t ${accent}`} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+        <div className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${accent}`} />
+        {project.cover ? (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+        ) : null}
 
         <div className="absolute left-4 top-4 flex items-center gap-2">
           <span className="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs text-white/90 backdrop-blur">

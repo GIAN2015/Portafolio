@@ -3,7 +3,7 @@ export type Project = {
   slug: string;
   title: string;
   company?: string;
-  type: "Web" | "Ecommerce" | "Sistema" | "Landing" | "App";
+  type: "Integración" | "IA" | "Automatización" | "Web" | "Ecommerce" | "Sistema" | "Landing" | "App";
   description: string;
   problem?: string;
   solution?: string;
@@ -14,11 +14,108 @@ export type Project = {
   links: { demo?: string; repo?: string };
   highlights: string[];
 
+  /** Pasos del flujo / arquitectura, se dibujan como diagrama */
+  architecture?: string[];
+  /** Proyecto de empresa: se muestra sin código ni datos reales */
+  confidential?: boolean;
+
   cover?: string; // "/projects/xxx.png"
   accent?: "blue" | "violet" | "emerald" | "amber";
 };
 
 export const projects: Project[] = [
+  {
+    slug: "netsuite-looker-pipeline",
+    title: "Pipeline de datos NetSuite → Looker Studio",
+    company: "CADSO",
+    type: "Integración",
+    description:
+      "Integración automática que lleva Casos, Actividades Técnicas y Oportunidades del ERP a dashboards gerenciales.",
+    problem:
+      "La información comercial y de servicio técnico vivía dentro de NetSuite y los reportes para gerencia se armaban a mano exportando datos, con información desactualizada y horas de trabajo repetitivo.",
+    solution:
+      "Desarrollé RESTlets en SuiteScript 2.x que exponen los registros del ERP (con consultas SuiteQL y Saved Searches) y los sincronizan con Google Sheets mediante su API. Esas hojas alimentan dashboards en Looker Studio que se actualizan solos.",
+    role: "Diseño de la integración, desarrollo SuiteScript (RESTlets), modelado de datos y dashboards",
+    stack: ["Oracle NetSuite", "SuiteScript 2.x", "RESTlets", "SuiteQL", "Google Sheets API", "Looker Studio"],
+    tags: ["ERP", "Integración", "BI", "Automatización"],
+    year: "2025-2026",
+    links: {},
+    highlights: [
+      "Reportes gerenciales sin consolidación manual",
+      "Datos de ventas y servicio técnico en un solo tablero",
+      "Depuración de RESTlets para Casos, Actividades y Oportunidades",
+    ],
+    architecture: ["NetSuite ERP/CRM", "RESTlet (SuiteScript 2.x)", "Google Sheets API", "Looker Studio"],
+    confidential: true,
+    accent: "blue",
+  },
+  {
+    slug: "ia-generativa-erp-mcp",
+    title: "Asistente de IA conectado al ERP (MCP + OAuth 2.0)",
+    company: "CADSO",
+    type: "IA",
+    description:
+      "Integración de IA generativa con Oracle NetSuite para consultar datos del ERP en lenguaje natural, de forma segura.",
+    problem:
+      "Obtener información puntual del ERP (clientes, oportunidades, actividades) requería saber construir búsquedas o pedírselo al área técnica.",
+    solution:
+      "Configuré la conexión de un asistente de IA (Claude) con NetSuite mediante Model Context Protocol (MCP), autenticado con OAuth 2.0 y un rol dedicado de solo lectura, para que la IA consulte datos reales sin poder modificar nada.",
+    role: "Configuración de la integración, seguridad (OAuth 2.0, roles y permisos) y pruebas",
+    stack: ["Claude", "MCP", "Oracle NetSuite", "OAuth 2.0", "SuiteQL"],
+    tags: ["IA Generativa", "ERP", "Seguridad"],
+    year: "2026",
+    links: {},
+    highlights: [
+      "Consultas al ERP en lenguaje natural",
+      "Rol de solo lectura: la IA no puede alterar datos",
+      "Acceso controlado y auditable con OAuth 2.0",
+    ],
+    architecture: ["Usuario", "Asistente de IA (Claude)", "Servidor MCP", "OAuth 2.0 · rol solo lectura", "NetSuite ERP"],
+    confidential: true,
+    accent: "violet",
+  },
+  {
+    slug: "suitelet-facturas-totales",
+    title: "Suitelet de Facturas Totales",
+    company: "CADSO",
+    type: "Sistema",
+    description:
+      "Módulo a medida dentro de NetSuite que consolida facturas con conversión de tipo de cambio y cálculo de detracción.",
+    problem:
+      "Finanzas necesitaba ver el total facturado en una sola moneda y con las detracciones aplicadas, algo que los reportes estándar del ERP no daban.",
+    solution:
+      "Desarrollé un Suitelet en SuiteScript 2.x que consulta las facturas, aplica el tipo de cambio y la lógica de detracción, y presenta el consolidado dentro del mismo ERP.",
+    role: "Análisis del requerimiento con Finanzas, desarrollo SuiteScript y validación",
+    stack: ["Oracle NetSuite", "SuiteScript 2.x", "Suitelet", "SuiteQL"],
+    tags: ["ERP", "Finanzas", "Desarrollo a medida"],
+    year: "2025-2026",
+    links: {},
+    highlights: ["Consolidado en una sola moneda", "Detracción calculada automáticamente", "Integrado al flujo del ERP"],
+    architecture: ["Facturas en NetSuite", "Suitelet (SuiteScript 2.x)", "Tipo de cambio + detracción", "Reporte consolidado"],
+    confidential: true,
+    accent: "emerald",
+  },
+  {
+    slug: "migracion-historica-netsuite",
+    title: "Migración de 5 años de datos históricos a NetSuite",
+    company: "CADSO",
+    type: "Automatización",
+    description:
+      "Proceso ETL para limpiar, transformar e importar en bloque las actividades de 2021 a 2025 al ERP.",
+    problem:
+      "Cinco años de actividades comerciales y técnicas estaban fuera del ERP, lo que impedía tener historial completo de clientes y reportes confiables.",
+    solution:
+      "Extraje y normalicé los datos, los transformé al formato de importación de NetSuite y los cargué mediante importación masiva CSV. Documenté el proceso en manuales técnicos (importación de facturas de proveedores y eliminación masiva) para que el equipo pueda repetirlo.",
+    role: "ETL, validación de datos, carga masiva y documentación técnica",
+    stack: ["Oracle NetSuite", "CSV Import", "Excel avanzado", "SQL"],
+    tags: ["ETL", "Datos", "Documentación"],
+    year: "2025-2026",
+    links: {},
+    highlights: ["Historial 2021–2025 disponible en el ERP", "Proceso documentado y repetible", "Datos validados antes de la carga"],
+    architecture: ["Datos históricos 2021–2025", "Limpieza y transformación", "CSV Import masivo", "NetSuite ERP"],
+    confidential: true,
+    accent: "amber",
+  },
   {
     slug: "helpdesk-tickets-next-nest-postgres",
     title: "Sistema Helpdesk de Tickets",
@@ -34,7 +131,12 @@ export const projects: Project[] = [
     tags: ["Fullstack", "Sistema", "Empresa"],
     year: "2025",
     links: { demo: "https://sistema-tickets.danyris.com/login" },
-    highlights: ["Roles y estados", "Historial y notificaciones", "Mejor control del soporte"],
+    highlights: [
+      "40% menos tiempo de resolución de tickets",
+      "100% de los reportes operativos centralizados",
+      "Roles, estados, historial y notificaciones",
+    ],
+    architecture: ["Usuario", "Frontend Next.js", "API REST Nest.js", "PostgreSQL"],
     cover: "/projects/helpdesk-tickets-next-nest-postgres.png",
     accent: "blue",
   },

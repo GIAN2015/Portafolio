@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const nav = [
   { label: "Proyectos", href: "#projects" },
-  { label: "Tecnologías", href: "#tech" },
+  { label: "Experiencia", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Contacto", href: "#contact" },
 ];
@@ -25,7 +25,7 @@ export default function Navbar() {
             </div>
             <div className="leading-tight">
               <p className="text-sm font-semibold text-white">Gian Carlos Sinarahua Cárdenas</p>
-              <p className="text-xs text-white/60">Lima, Perú</p>
+              <p className="text-xs text-white/60">Integración de Sistemas · Lima, Perú</p>
             </div>
           </Link>
 

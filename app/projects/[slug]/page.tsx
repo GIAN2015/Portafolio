@@ -5,6 +5,11 @@ import { notFound } from "next/navigation";
 import Badge from "@/components/Badge";
 import SectionTitle from "@/components/SectionTitle";
 import { projects } from "@/data/projects";
+import FlowDiagram from "@/components/FlowDiagram";
+
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
 
 export default async function ProjectDetailPage({
   params,
@@ -41,7 +46,7 @@ export default async function ProjectDetailPage({
               priority={false}
             />
           ) : (
-            <div className="h-full w-full bg-gradient-to-br from-white/10 to-transparent" />
+            <div className="h-full w-full bg-gradient-to-br from-white/15 via-white/5 to-transparent" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute bottom-5 left-6">
@@ -87,6 +92,22 @@ export default async function ProjectDetailPage({
           </div>
         </div>
       </header>
+
+      {project.architecture ? (
+        <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <SectionTitle
+            eyebrow="Arquitectura"
+            title="Cómo fluye la solución"
+            subtitle="Vista general de los componentes y el recorrido de los datos."
+          />
+          <FlowDiagram steps={project.architecture} />
+          {project.confidential ? (
+            <p className="mt-5 text-xs text-white/50">
+              Proyecto realizado para una empresa: por confidencialidad no se publica código, capturas ni datos reales.
+            </p>
+          ) : null}
+        </section>
+      ) : null}
 
       <section className="grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">

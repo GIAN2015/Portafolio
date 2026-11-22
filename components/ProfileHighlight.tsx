@@ -5,7 +5,7 @@ export default function ProfileHighlight() {
         <div>
           <p className="text-xs uppercase tracking-widest text-white/60">Perfil</p>
           <p className="mt-1 text-sm text-white/80">
-            Full-Stack (Next.js · NestJS · WordPress · Laravel) · Lima, Perú
+            Integración de Sistemas · Oracle NetSuite · APIs · Automatización e IA · Lima, Perú
           </p>
         </div>
 

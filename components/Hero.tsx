@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/data/projects";
+import { profile } from "@/data/profile";
+import FlowDiagram from "@/components/FlowDiagram";
 
 export default function Hero() {
-  const featured = projects[0]; // o el que tú quieras destacar
+  const featured = projects[0]; // caso destacado
+  const waUrl = `https://wa.me/${profile.whatsapp.number}?text=${encodeURIComponent(
+    profile.whatsapp.message
+  )}`;
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10">
@@ -14,7 +19,7 @@ export default function Hero() {
         {/* LEFT */}
         <div>
           <div className="flex flex-wrap gap-2">
-            {["Next.js", "NestJS", "WordPress", "PostgreSQL"].map((t) => (
+            {["Oracle NetSuite", "APIs REST/SOAP", "Automatización", "IA Generativa"].map((t) => (
               <span
                 key={t}
                 className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/70"
@@ -25,13 +30,14 @@ export default function Hero() {
           </div>
 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
-            Construyo sistemas web modernos{" "}
+            Integro sistemas empresariales{" "}
             <span className="text-white/70">que sí se usan.</span>
           </h1>
 
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70">
-            Ingeniería de Sistemas (UNTELS). Experiencia en WordPress (Elementor),
-            Laravel y stack Next.js + NestJS + PostgreSQL.
+            Implemento e integro sistemas a la medida de cada negocio: ERP (Oracle
+            NetSuite), CAD/PDM, servicios en la nube, dashboards e IA generativa.
+            {" "}{profile.current}
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -43,14 +49,16 @@ export default function Hero() {
             </a>
 
             <a
-              href="mailto:giansica29@gmail.com"
+              href={profile.links.cv}
+              target="_blank"
+              rel="noreferrer"
               className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/80 hover:bg-white/[0.06]"
             >
-              Escribirme (Email)
+              Descargar CV
             </a>
 
             <a
-              href="https://wa.me/51999999999?text=Hola%20Gian%2C%20vi%20tu%20portafolio%20y%20quiero%20hablar%20de%20un%20proyecto."
+              href={waUrl}
               target="_blank"
               rel="noreferrer"
               className="rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-white/80 hover:bg-white/[0.06]"
@@ -60,8 +68,8 @@ export default function Hero() {
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <InfoCard label="Focus" value="Sistemas & ecommerce" />
-            <InfoCard label="Modo" value="Clean UI + backend real" />
+            <InfoCard label="Enfoque" value="ERP + integraciones" />
+            <InfoCard label="Experiencia" value="3 años" />
             <InfoCard label="Base" value="Lima, Perú" />
           </div>
         </div>
@@ -86,14 +94,20 @@ export default function Hero() {
           </div>
 
           <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
-            <Image
-              src={featured.cover ?? "/covers/placeholder.jpg"}
-              alt={featured.title}
-              width={1200}
-              height={700}
-              className="h-[240px] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-              priority
-            />
+            {featured.cover ? (
+              <Image
+                src={featured.cover}
+                alt={featured.title}
+                width={1200}
+                height={700}
+                className="h-[240px] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                priority
+              />
+            ) : (
+              <div className="flex h-[240px] w-full items-center bg-gradient-to-br from-blue-500/20 via-white/5 to-transparent p-5">
+                {featured.architecture ? <FlowDiagram steps={featured.architecture} /> : null}
+              </div>
+            )}
           </div>
 
           <h3 className="mt-4 text-lg font-semibold text-white">

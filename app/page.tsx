@@ -7,6 +7,8 @@ import { profile } from "@/data/profile";
 import Talks from "@/components/Talks";
 import Credentials from "@/components/Credentials";
 import TechStack from "@/components/TechStack";
+import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
 export default function HomePage() {
   const waUrl = `https://wa.me/${profile.whatsapp.number}?text=${encodeURIComponent(
     profile.whatsapp.message
@@ -20,7 +22,7 @@ export default function HomePage() {
         <SectionTitle
           eyebrow="Resumen"
           title="Lo que hago"
-          subtitle="Trabajo proyectos reales de negocio: desde webs corporativas hasta sistemas internos y ecommerce con integraciones."
+          subtitle="No solo programo: analizo el proceso del negocio, diseño la solución e integro los sistemas para que la información fluya sola."
         />
         <div className="grid gap-4 md:grid-cols-2">
           {profile.highlights.slice(0, 6).map((h) => (
@@ -37,6 +39,8 @@ export default function HomePage() {
       <div className="animate-fadeUp anim-delay-200">
         <ProjectsGrid projects={projects} />
       </div>
+      <Experience />
+      <Skills />
       <div className="animate-fadeUp anim-delay-300">
         <Credentials />
       </div>
@@ -53,7 +57,7 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="Contacto"
             title="Hablemos"
-            subtitle="Si necesitas un sistema, ecommerce o una web corporativa, te respondo rápido."
+            subtitle="¿Buscas a alguien para integrar sistemas, automatizar procesos o desarrollar sobre tu ERP? Escríbeme."
           />
 
           <div className="flex flex-wrap items-center gap-3">
@@ -66,10 +70,20 @@ export default function HomePage() {
               Escribirme por WhatsApp
             </a>
             <a
-              href="#projects"
+              href={profile.links.cv}
+              target="_blank"
+              rel="noreferrer"
               className="rounded-2xl border border-white/15 bg-black/20 px-5 py-3 text-sm font-semibold text-white hover:border-white/25"
             >
-              Ver proyectos
+              Descargar CV
+            </a>
+            <a
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-2xl border border-white/15 bg-black/20 px-5 py-3 text-sm font-semibold text-white hover:border-white/25"
+            >
+              LinkedIn
             </a>
           </div>
 

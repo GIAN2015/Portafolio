@@ -6,8 +6,9 @@ import CodeParticles from "@/components/CodeParticles";
 import Walker from "@/components/Walker";
 import TechFloat from "@/components/TechFloat";
 export const metadata: Metadata = {
-  title: "Portafolio | Gian Sinarahua",
-  description: "Portafolio de proyectos: sistemas, ecommerce e integraciones.",
+  title: "Gian Sinarahua | Integración de Sistemas · NetSuite · Automatización e IA",
+  description:
+    "Portafolio de Gian Carlos Sinarahua Cárdenas: integración de sistemas empresariales, Oracle NetSuite ERP/CRM, APIs REST/SOAP, automatización e IA generativa.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

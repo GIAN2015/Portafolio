@@ -7,10 +7,12 @@ import SectionTitle from "@/components/SectionTitle";
 
 const TYPES: Array<Project["type"] | "Todos"> = [
   "Todos",
+  "Integración",
+  "IA",
+  "Automatización",
   "Sistema",
   "Ecommerce",
   "Web",
-  "Landing",
   "App",
 ];
 
@@ -28,7 +30,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
         <SectionTitle
           eyebrow="Portafolio"
           title="Proyectos seleccionados"
-          subtitle="Casos reales: sistemas internos, ecommerce e integraciones. Entra a cada proyecto para ver problema, solución, rol y stack."
+          subtitle="Casos reales: integraciones ERP, automatización, IA aplicada, sistemas internos y ecommerce. Entra a cada caso para ver problema, solución, arquitectura y resultados."
         />
 
         <div className="flex flex-wrap gap-2">
