@@ -4,59 +4,53 @@ import { useMemo, useState } from "react";
 import type { Project } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import SectionTitle from "@/components/SectionTitle";
+import Reveal from "@/components/Reveal";
 
-const TYPES: Array<Project["type"] | "Todos"> = [
-  "Todos",
-  "3D",
-  "Integración",
-  "IA",
-  "Automatización",
-  "Sistema",
-  "Ecommerce",
-  "Web",
-  "App",
-];
+const TYPES: Array<Project["type"] | "Todos"> = ["Todos", "3D", "Integración", "IA", "Automatización", "Sistema", "Ecommerce", "Web", "App"];
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<(typeof TYPES)[number]>("Todos");
 
-  const filtered = useMemo(() => {
-    if (active === "Todos") return projects;
-    return projects.filter((p) => p.type === active);
-  }, [active, projects]);
+  const filtered = useMemo(
+    () => (active === "Todos" ? projects : projects.filter((p) => p.type === active)),
+    [active, projects]
+  );
 
   return (
-    <section id="projects" className="mt-14">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <SectionTitle
-          eyebrow="Portafolio"
-          title="Proyectos seleccionados"
-          subtitle="Casos reales: integraciones ERP, automatización, IA aplicada, sistemas internos y ecommerce. Entra a cada caso para ver problema, solución, arquitectura y resultados."
-        />
+    <section id="projects" className="scroll-mt-28">
+      <SectionTitle
+        eyebrow="Portafolio"
+        title="Proyectos que resuelven problemas reales"
+        subtitle="Integraciones ERP, automatización, IA aplicada, visualización 3D y sistemas a medida."
+      />
 
-        <div className="flex flex-wrap gap-2">
-          {TYPES.map((t) => {
-            const isActive = t === active;
-            return (
-              <button
-                key={t}
-                onClick={() => setActive(t)}
-                className={
-                  isActive
-                    ? "rounded-full border border-white/15 bg-white px-3 py-1 text-xs font-semibold text-black"
-                    : "rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/80 hover:border-white/20"
-                }
-              >
-                {t}
-              </button>
-            );
-          })}
-        </div>
+      <div className="mb-8 flex flex-wrap gap-2">
+        {TYPES.map((t) => {
+          const isActive = t === active;
+          const count = t === "Todos" ? projects.length : projects.filter((p) => p.type === t).length;
+          if (!count) return null;
+          return (
+            <button
+              key={t}
+              onClick={() => setActive(t)}
+              className={
+                "rounded-full px-4 py-1.5 text-sm transition " +
+                (isActive
+                  ? "btn-primary font-semibold text-white"
+                  : "glass text-slate-300 hover:border-blue-400/40 hover:text-white")
+              }
+            >
+              {t} <span className={isActive ? "text-white/80" : "text-slate-500"}>{count}</span>
+            </button>
+          );
+        })}
       </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
-        {filtered.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+      <div className="grid gap-5 md:grid-cols-2" key={active}>
+        {filtered.map((p, i) => (
+          <Reveal key={p.slug} delay={(i % 2) * 120} className={i === 0 && active === "Todos" ? "md:col-span-2" : ""}>
+            <ProjectCard project={p} featured={i === 0 && active === "Todos"} />
+          </Reveal>
         ))}
       </div>
     </section>

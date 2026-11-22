@@ -2,16 +2,23 @@
 
 :root {
   color-scheme: dark;
+  --bg: #050816;
+  --surface: rgba(13, 20, 42, 0.62);
+  --border: rgba(148, 163, 184, 0.14);
+  --primary: #3b82f6;
+  --cyan: #22d3ee;
+  --violet: #8b5cf6;
 }
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
-  background: #07070a;
-  color: white;
+  font-family: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: #e2e8f0;
 }
 
 html {
@@ -19,148 +26,147 @@ html {
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.35);
+  background: rgba(59, 130, 246, 0.4);
 }
 
-/* ===== Animaciones pro ===== */
+/* ===== Superficies ===== */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #60a5fa 0%, #22d3ee 45%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 6s linear infinite;
+}
+
+/* borde con degradado animado al hover */
+.glow-border {
+  position: relative;
+  isolation: isolate;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, rgba(59, 130, 246, 0.9), rgba(34, 211, 238, 0.6), rgba(139, 92, 246, 0.9));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px rgba(34, 211, 238, 0.8);
+}
+
+/* ===== Animaciones ===== */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-    filter: blur(2px);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeUp { animation: fadeUp 0.8s cubic-bezier(.2,.7,.2,1) both; }
+.anim-delay-100 { animation-delay: .1s; }
+.anim-delay-200 { animation-delay: .2s; }
+.anim-delay-300 { animation-delay: .3s; }
+.anim-delay-500 { animation-delay: .5s; }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+/* aparición al hacer scroll (ver components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+@keyframes shine {
+  to { background-position: 200% center; }
 }
 
-.animate-fadeUp {
-  animation: fadeUp .75s ease both;
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
 }
 
-.animate-fadeIn {
-  animation: fadeIn .6s ease both;
+@keyframes aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, 6%, 0) scale(1.15); }
+}
+.aurora {
+  animation: aurora 18s ease-in-out infinite;
 }
 
-/* Delays (Tailwind no controla delay de animación por defecto) */
-.anim-delay-100 {
-  animation-delay: .10s;
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-y {
+  animation: floatY 5s ease-in-out infinite;
 }
 
-.anim-delay-200 {
-  animation-delay: .20s;
+@keyframes dash {
+  to { stroke-dashoffset: -24; }
 }
-
-.anim-delay-300 {
-  animation-delay: .30s;
-}
-
-.anim-delay-500 {
-  animation-delay: .50s;
-}
-
-@keyframes floatSoft {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-    opacity: .0;
-  }
-
-  10% {
-    opacity: .65;
-  }
-
-  50% {
-    transform: translate3d(20px, -40px, 0) rotate(8deg);
-    opacity: .45;
-  }
-
-  90% {
-    opacity: .65;
-  }
-
-  100% {
-    transform: translate3d(0, -90px, 0) rotate(0deg);
-    opacity: 0;
-  }
-}
-
-.code-float {
-  animation: floatSoft 9s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes walk {
-  0% {
-    transform: translateX(-120px) translateY(0);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: .9;
-  }
-
-  50% {
-    transform: translateX(calc(50vw - 60px)) translateY(-6px);
-  }
-
-  90% {
-    opacity: .9;
-  }
-
-  100% {
-    transform: translateX(calc(100vw + 120px)) translateY(0);
-    opacity: 0;
-  }
-}
-
-.walker {
-  animation: walk 14s linear infinite;
-  will-change: transform, opacity;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .animate-fadeUp,
-  .animate-fadeIn,
-  .code-float,
-  .walker {
-    animation: none !important;
-  }
-}
-
-@keyframes floatSoft {
-  0%   { transform: translate3d(0,0,0) rotate(-2deg) scale(0.98); opacity: 0; }
-  10%  { opacity: .65; }
-  50%  { transform: translate3d(18px,-40px,0) rotate(6deg) scale(1); opacity: .45; }
-  90%  { opacity: .65; }
-  100% { transform: translate3d(0,-90px,0) rotate(-2deg) scale(0.98); opacity: 0; }
-}
-
-.tech-float {
-  animation: floatSoft 10s ease-in-out infinite;
-  will-change: transform, opacity;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,.45));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tech-float { animation: none !important; }
+.flow-dash {
+  stroke-dasharray: 6 6;
+  animation: dash 1.2s linear infinite;
 }
 
 @keyframes scan {
   0% { transform: translateY(0); }
   50% { transform: translateY(62px); }
   100% { transform: translateY(0); }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulseRing 2.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeUp,
+  .marquee,
+  .aurora,
+  .float-y,
+  .flow-dash,
+  .gradient-text,
+  .pulse-ring {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

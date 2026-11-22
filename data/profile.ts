@@ -2,6 +2,8 @@
 export const profile = {
   name: "Gian Carlos Sinarahua Cárdenas",
   location: "Lima, Perú",
+  /** Foto profesional: colócala en /public/me.jpg y escribe "/me.jpg" */
+  photo: "",
   phone: "+51 967 152 992",
   email: "giansica29@gmail.com",
 

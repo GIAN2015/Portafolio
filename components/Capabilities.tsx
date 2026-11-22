@@ -44,7 +44,7 @@ const items = [
 
 export default function Capabilities() {
   return (
-    <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
+    <section>
       <SectionTitle
         eyebrow="Lo que hago"
         title="Analizo el proceso, diseño la solución e integro los sistemas"
@@ -53,9 +53,9 @@ export default function Capabilities() {
         {items.map((it) => (
           <div
             key={it.title}
-            className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${it.color} via-transparent to-transparent p-5 transition hover:-translate-y-1 hover:border-white/25`}
+            className={`glass glow-border group relative overflow-hidden rounded-2xl bg-gradient-to-br ${it.color} via-transparent to-transparent p-6 transition duration-300 hover:-translate-y-1.5`}
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-black/40">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-[0_8px_24px_-8px_rgba(34,211,238,0.8)] transition group-hover:scale-110">
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="white" strokeWidth="1.6">
                 {it.icon}
               </svg>

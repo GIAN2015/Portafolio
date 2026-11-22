@@ -2,53 +2,40 @@ import SectionTitle from "@/components/SectionTitle";
 import Badge from "@/components/Badge";
 
 export default function Talks() {
-    return (
-        <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
-            <SectionTitle
-                eyebrow="Comunidad"
-                title="Ponencias & talleres"
-                subtitle="Experiencia compartiendo conocimientos y construyendo comunidad."
-            />
-
-            <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                    <div className="flex flex-wrap gap-2">
-                        <Badge>WordPress</Badge>
-                        <Badge>Elementor</Badge>
-                        <Badge>Comunidad</Badge>
-                    </div>
-
-                    <h3 className="mt-4 text-lg font-semibold text-white">
-                        Ponencia: WordPress + Elementor (en universidad)
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-relaxed text-white/70">
-                        Realicé una ponencia práctica sobre creación de sitios web con WordPress y
-                        Elementor, compartiendo buenas prácticas de diseño, estructura y despliegue.
-                        Actividad realizada con la comunidad Chapitec.
-                    </p>
-
-                    <ul className="mt-4 space-y-2 text-sm text-white/75">
-                        <li>• Enfoque: sitios corporativos, secciones clave y UX</li>
-                        <li>• Resultado: guía práctica + demostración en vivo</li>
-                        <li>• Rol: expositor / facilitador</li>
-                    </ul>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                    <p className="text-xs uppercase tracking-widest text-white/60">
-                        Imagen Referencial
-                    </p>
-                    <p className="mt-2 text-sm text-white/70">
-
-                       <img src="/talks/chapitec-wordpress-elementor.jpg"></img>
-
-
-                    </p>
-
-                  
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section>
+      <SectionTitle eyebrow="Comunidad" title="Ponencias y talleres" subtitle="Compartiendo conocimiento y construyendo comunidad." />
+      <div className="glass glow-border group grid overflow-hidden rounded-3xl md:grid-cols-2">
+        <div className="relative min-h-[260px] overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/talks/chapitec-wordpress-elementor.jpg"
+            alt="Ponencia de Gian en Chapitec"
+            className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/80 via-transparent to-transparent md:bg-gradient-to-r" />
+        </div>
+        <div className="p-6 sm:p-8">
+          <div className="flex flex-wrap gap-2">
+            <Badge>Chapitec</Badge>
+            <Badge>Expositor</Badge>
+            <Badge>Talleres</Badge>
+          </div>
+          <h3 className="mt-4 text-xl font-semibold text-white">Ponente y organizador en la comunidad Chapitec</h3>
+          <ul className="mt-5 space-y-3 text-sm text-slate-300">
+            {[
+              "Ponencia práctica: sitios web con WordPress + Elementor",
+              "Talleres de React, Next.js, Flutter y Google Cloud",
+              "Ponente UNTELS: Modelado de Datos y JavaScript (2025)",
+            ].map((x) => (
+              <li key={x} className="flex gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                {x}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
 }

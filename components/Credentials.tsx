@@ -9,7 +9,7 @@ export default function Credentials() {
   return (
     <section
       id="credentials"
-      className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
+      className="scroll-mt-28"
     >
       <SectionTitle
         eyebrow="Credenciales"
@@ -19,14 +19,14 @@ export default function Credentials() {
 
       <div className="grid gap-4 md:grid-cols-2">
         {/* CCNA */}
-        <div className="group overflow-hidden rounded-3xl border border-white/10 bg-black/20 transition hover:border-white/20">
+        <div className="glass glow-border group overflow-hidden rounded-3xl transition duration-300 hover:-translate-y-1">
           {/* Cover */}
           <div className="relative aspect-[16/9] w-full">
             <Image
               src="/credentials/ccna-badge.png"
               alt="Cisco Networking Academy Verified - CCNA: Introduction to Networks"
               fill
-              className="object-cover"
+              className="object-cover transition duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority={false}
             />
@@ -58,7 +58,7 @@ export default function Credentials() {
                 href="/certs/ccna-itn.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90"
+                className="btn-primary rounded-xl px-4 py-2 text-sm font-semibold text-white"
               >
                 Ver certificado (PDF)
               </a>
@@ -67,14 +67,14 @@ export default function Credentials() {
         </div>
 
         {/* Publicación */}
-        <div className="group overflow-hidden rounded-3xl border border-white/10 bg-black/20 transition hover:border-white/20">
+        <div className="glass glow-border group overflow-hidden rounded-3xl transition duration-300 hover:-translate-y-1">
           {/* Cover (tu screenshot de inicio) */}
           <div className="relative aspect-[16/9] w-full">
             <Image
               src="/credentials/publication.png"
               alt="Publicación científica en Procedia Computer Science (Elsevier)"
               fill
-              className="object-cover"
+              className="object-cover transition duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority={false}
             />
